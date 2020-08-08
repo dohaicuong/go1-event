@@ -4,6 +4,7 @@ import { createMockEnvironment, MockPayloadGenerator } from 'relay-test-utils'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 
 import EventList from '.'
+import { BrowserRouter } from 'react-router-dom'
 
 afterEach(cleanup)
 
@@ -12,7 +13,9 @@ describe('<EventList />', () => {
     const environment = createMockEnvironment()
     const { getByText } = render(
       <RelayEnvironmentProvider environment={environment}>
-        <EventList />
+        <BrowserRouter>
+          <EventList />
+        </BrowserRouter>
       </RelayEnvironmentProvider>
     )
 
@@ -23,7 +26,9 @@ describe('<EventList />', () => {
     const environment = createMockEnvironment()
     const { getByText, findByText, container } = render(
       <RelayEnvironmentProvider environment={environment}>
-        <EventList />
+        <BrowserRouter>
+          <EventList />
+        </BrowserRouter>
       </RelayEnvironmentProvider>
     )
 

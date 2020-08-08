@@ -4,6 +4,7 @@ import { graphql } from 'babel-plugin-relay/macro'
 import { useFragment } from 'react-relay/hooks'
 import { EventListItem_event$key } from './__generated__/EventListItem_event.graphql'
 import { ListItem, ListItemText, Typography } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
 type EventListItemProps = {
   event: EventListItem_event$key
@@ -35,8 +36,13 @@ const EventListItem: React.FC<EventListItemProps> = props => {
 
   const seatAvailable = event.availableSeats.length
 
+  const { push } = useHistory()
+  const handleItemClick = () => {
+    push(`/event/${event.id}`)
+  }
+
   return (
-    <ListItem button>
+    <ListItem button onClick={handleItemClick}>
       <ListItemText
         primary={event.title}
         secondary={
@@ -44,7 +50,7 @@ const EventListItem: React.FC<EventListItemProps> = props => {
             <Typography variant="body2" color="textPrimary">
               {eventAddress}
             </Typography>
-            {seatAvailable} {seatAvailable > 1 ? 'seats' : 'seat' } "left"
+            {seatAvailable} {seatAvailable > 1 ? 'seats' : 'seat' } left
           </>
         }
       />

@@ -51,4 +51,24 @@ describe('Event', () => {
     expect(nodeResult.node).toHaveProperty('time')
     expect(nodeResult.node).toHaveProperty('image')
   })
+  test('where filter keywords', async () => {
+    const title = 'Place 1'
+    const result = await ctx.client.send(
+      `
+        query KeywordsFilterQuery($title: String) {
+          eventConnection(first: 10, where: { keywords: $title }) {
+            edges {
+              node {
+                id
+                title
+              }
+            }
+          }
+        }
+      `,
+      { title }
+    )
+    const filteredResult = result.eventConnection.edges.filter((edge: any) => edge.node.title !== title)
+    expect(filteredResult).toHaveLength(0)
+  })
 })

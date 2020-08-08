@@ -4,12 +4,13 @@ import { usePaginationFragment, useLazyLoadQuery } from 'react-relay/hooks'
 import { graphql } from 'babel-plugin-relay/macro'
 import { EventListPaginationQuery } from './__generated__/EventListPaginationQuery.graphql'
 import { EventList_query$key } from './__generated__/EventList_query.graphql'
-import { EventListQuery } from './__generated__/EventListQuery.graphql'
+import { EventListQuery, EventConnectionWhereInput } from './__generated__/EventListQuery.graphql'
 
 import { List, ListItem } from '@material-ui/core'
 import { ErrorBoundary } from 'react-error-boundary'
 import ErrorBoundaryWithRetry from 'components/ErrorBoundaryWithRetry'
 import EventListItem from '../EventListItem'
+import EventListFilter from '../EventListFilter'
 
 type EventListPaginationProps = {
   query: EventList_query$key
@@ -60,24 +61,22 @@ const EventListPagination: React.FC<EventListPaginationProps> = props => {
 }
 
 const EventListLazyLoad: React.FC = () => {
+  const [where, setWhere] = React.useState<EventConnectionWhereInput>()
   const query = useLazyLoadQuery<EventListQuery>(
     graphql`
       query EventListQuery($where: EventConnectionWhereInput) {
         ...EventList_query
       }
     `,
-    {
-      // where: {
-      //   keywords: '',
-      //   time: '',
-      //   city: '',
-      //   state: '',
-      //   country: '',
-      // }
-    },
+    { where },
   )
     
-  return <EventListPagination query={query} />
+  return (
+    <>
+      <EventListFilter where={where} setWhere={setWhere} />
+      <EventListPagination query={query} />
+    </>
+  )
 }
 
 const EventList: React.FC = () => {

@@ -31,7 +31,7 @@ const EventListItem: React.FC<EventListItemProps> = props => {
 
   const { city, state, country } = event.location
   const eventAddress = React.useMemo(() => {
-    return `${city} ${state}, ${country}`
+    return `${city}, ${state}, ${country}`
   }, [city, state, country])
 
   const seatAvailable = event.availableSeats.length

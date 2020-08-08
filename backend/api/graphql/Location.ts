@@ -9,3 +9,10 @@ schema.objectType({
     t.model.country()
   }
 })
+
+// schema.extendType({
+//   type: 'Query',
+//   definition: t => {
+//     t.crud.locations()
+//   }
+// })

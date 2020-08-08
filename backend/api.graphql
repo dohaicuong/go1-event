@@ -15,7 +15,6 @@ type Event implements Node {
   """Relay ID"""
   id: ID!
   image: String!
-  location: Location!
   time: DateTime!
   title: String!
 }
@@ -32,6 +31,14 @@ type EventConnection {
   pageInfo: PageInfo!
 }
 
+input EventConnectionWhereInput {
+  city: String
+  country: String
+  keywords: String
+  state: String
+  time: DateTime
+}
+
 type EventEdge {
   """https://facebook.github.io/relay/graphql/connections.htm#sec-Cursor"""
   cursor: String!
@@ -44,15 +51,6 @@ type EventEdge {
 The `JSON` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar Json
-
-type Location implements Node {
-  city: String!
-  country: String!
-
-  """Relay ID"""
-  id: ID!
-  state: String!
-}
 
 interface Node {
   """Relay ID"""
@@ -97,6 +95,7 @@ type Query {
 
     """Returns the last n elements from the list."""
     last: Int
+    where: EventConnectionWhereInput
   ): EventConnection
   node(id: ID!): Node
   nodes(ids: [ID!]!): [Node!]

@@ -3,7 +3,7 @@ import { schema } from 'nexus'
 schema.objectType({
   name: 'Event',
   definition: t => {
-    t.model.id()
+    t.implements('Node')
     t.model.title()
     t.model.time()
     t.model.image()

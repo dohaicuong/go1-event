@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event eventConnection query 1`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-22T02:30:00.000Z",
+  "title": "Place 1",
+}
+`;
+
+exports[`Event eventConnection query 2`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 2",
+}
+`;
+
+exports[`Event eventConnection query 3`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 3",
+}
+`;
+
+exports[`Event eventConnection query 4`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 4",
+}
+`;
+
+exports[`Event eventConnection query 5`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 5",
+}
+`;
+
+exports[`Event eventConnection query 6`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 6",
+}
+`;
+
+exports[`Event eventConnection query 7`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 7",
+}
+`;
+
+exports[`Event eventConnection query 8`] = `
+Object {
+  "id": Any<String>,
+  "image": "http://example.com/image.png",
+  "time": "2018-07-24T02:30:00.000Z",
+  "title": "Place 8",
+}
+`;

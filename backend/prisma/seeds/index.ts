@@ -7,9 +7,9 @@ import eventData from './events'
 const db = new PrismaClient()
 
 ;(async () => {
-  // await db.seat.deleteMany({})
-  // await db.event.deleteMany({})
-  // await db.location.deleteMany({})
+  await db.seat.deleteMany({})
+  await db.event.deleteMany({})
+  await db.location.deleteMany({})
 
   await Promise.all(seatData.map(seat => db.seat.create({ data: { id: seat.id }})))
   const locations = await Promise.all(locationData.map(location => {

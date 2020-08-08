@@ -5,6 +5,8 @@ import { RelayEnvironmentProvider } from 'react-relay/hooks'
 
 import EventList from '.'
 import { BrowserRouter } from 'react-router-dom'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 
 afterEach(cleanup)
 
@@ -27,7 +29,9 @@ describe('<EventList />', () => {
     const { getByText, findByText, container } = render(
       <RelayEnvironmentProvider environment={environment}>
         <BrowserRouter>
-          <EventList />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <EventList />
+          </MuiPickersUtilsProvider>
         </BrowserRouter>
       </RelayEnvironmentProvider>
     )
@@ -88,7 +92,7 @@ describe('<EventList />', () => {
       })
     })
 
-    await findByText(/seats: /)
+    await findByText(/Keywords/)
     expect(container).toMatchSnapshot()
   })
 })

@@ -4,17 +4,14 @@ import EventList from './EventList'
 
 const Home: React.FC = () => {
   return (
-    <>
-      Home
-      <Container maxWidth='md'>
-        <Typography variant='h4' gutterBottom>
-          Event list
-        </Typography>
-        <Paper>
-          <EventList />
-        </Paper>
-      </Container>
-    </>
+    <Container maxWidth='md'>
+      <Typography variant='h4' gutterBottom>
+        Event list
+      </Typography>
+      <Paper>
+        <EventList />
+      </Paper>
+    </Container>
   )
 }
 export default Home

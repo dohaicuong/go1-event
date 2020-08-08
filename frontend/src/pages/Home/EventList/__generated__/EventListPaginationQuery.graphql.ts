@@ -6,7 +6,7 @@ import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type EventConnectionWhereInput = {
     keywords?: string | null;
-    time?: unknown | null;
+    time?: string | null;
     city?: string | null;
     state?: string | null;
     country?: string | null;

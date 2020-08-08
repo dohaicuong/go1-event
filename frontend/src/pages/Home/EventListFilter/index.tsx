@@ -1,6 +1,7 @@
 import React from 'react'
 import { EventConnectionWhereInput } from '../EventList/__generated__/EventListQuery.graphql'
 import { ListItem, Grid, TextField, MenuItem, InputAdornment, Button } from '@material-ui/core'
+import { DatePicker } from '@material-ui/pickers'
 
 type EventListFilterProps = {
   where?: EventConnectionWhereInput
@@ -19,6 +20,13 @@ const EventListFilter: React.FC<EventListFilterProps> = ({ where, setWhere }) =>
     setWhere({
       ...where,
       keywords
+    })
+  }
+
+  const handleTimeChange = (date: Date | null) => {
+    setWhere({
+      ...where,
+      time: date?.toISOString() || undefined
     })
   }
 
@@ -48,7 +56,7 @@ const EventListFilter: React.FC<EventListFilterProps> = ({ where, setWhere }) =>
           />
         </Grid>
         <Grid item xs>
-          <TextField label="Time" />
+          <DatePicker label="Time" value={where?.time} onChange={handleTimeChange} />
         </Grid>
         <Grid item xs>
           <TextField

@@ -50,6 +50,7 @@ const EventListItem: React.FC<EventListItemProps> = props => {
             <Typography variant="body2" color="textPrimary">
               {eventAddress}
             </Typography>
+            <div>{new Date(event.time).toLocaleDateString()}</div>
             {seatAvailable} {seatAvailable > 1 ? 'seats' : 'seat' } left
           </>
         }

@@ -7,7 +7,7 @@ import { FragmentRefs } from "relay-runtime";
 export type EventListItem_event = {
     readonly id: string;
     readonly title: string;
-    readonly time: unknown;
+    readonly time: string;
     readonly location: {
         readonly city: string;
         readonly state: string;

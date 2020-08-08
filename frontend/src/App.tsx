@@ -5,6 +5,8 @@ import environment from 'providers/relay/environment'
 
 import { ThemeProvider, CssBaseline } from '@material-ui/core'
 import theme from 'providers/theme'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -21,16 +23,18 @@ const App = () => {
     <RelayEnvironmentProvider environment={environment}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <ErrorBoundary fallback={<>Routing error</>}>
-          <React.Suspense fallback='Loading page...'>
-            <Router>
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/event/:eventId' component={EventDetails} />
-              </Switch>
-            </Router>
-          </React.Suspense>
-        </ErrorBoundary>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <ErrorBoundary fallback={<>Routing error</>}>
+            <React.Suspense fallback='Loading page...'>
+              <Router>
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/event/:eventId' component={EventDetails} />
+                </Switch>
+              </Router>
+            </React.Suspense>
+          </ErrorBoundary>
+        </MuiPickersUtilsProvider>
       </ThemeProvider>
     </RelayEnvironmentProvider>
   )
